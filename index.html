@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MDM NAIL · Uñas a domicilio en Ventanilla y Mi Perú</title>
+<meta name="description" content="Soft Gel, Semipermanente, Acrílicas, Polygel, Nail Art y Press On a domicilio en Ventanilla y Mi Perú, Callao. Reserva por WhatsApp.">
+
+<!-- ====== Favicon (lacito rosado en la pestaña) ====== -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%23FFE3ED'/%3E%3Cg fill='%23E68FB0' transform='translate(0 10)'%3E%3Cpath d='M32 20C24 6 7 1 4 11c-3 11 14 17 28 9z'/%3E%3Cpath d='M32 20c8-14 25-19 28-9 3 11-14 17-28 9z'/%3E%3Cpath d='M29 21l-9 20 7-2 5-14z'/%3E%3Cpath d='M35 21l9 20-7-2-5-14z'/%3E%3Ccircle cx='32' cy='20' r='5.5'/%3E%3C/g%3E%3C/svg%3E">
+
+<!-- ====== Fuentes ====== -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Dancing+Script:wght@500;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<!-- ====== Tailwind CDN ====== -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          petal: '#FFF7FA',   // fondo principal rosado muy suave
+          blush: '#FFE3ED',   // rosado pastel
+          candy: '#F8BBD0',   // rosado medio
+          rose:  '#E68FB0',   // rosado intenso (acentos)
+          plum:  '#5B3445',   // texto principal
+          mauve: '#A27F8D',   // subtextos
+          shine: '#F3C96B'    // brillitos dorados
+        },
+        fontFamily: {
+          serif: ['"Cormorant Garamond"', 'serif'],
+          script: ['"Dancing Script"', 'cursive'],
+          sans: ['Montserrat', 'sans-serif']
+        }
+      }
+    }
+  }
+</script>
+
+<style>
+  body { background:#FFF7FA; color:#5B3445; -webkit-font-smoothing:antialiased; }
+  ::selection { background:#F8BBD0; color:#5B3445; }
+
+  /* Fondo con puntitos brillantes */
+  .dots { background-image:radial-gradient(#F8BBD0 1.2px, transparent 1.2px); background-size:26px 26px; }
+
+  /* Botón rosado con destello */
+  .btn-pink { position:relative; overflow:hidden; background:linear-gradient(135deg,#F8BBD0,#E68FB0 55%,#D9779E); color:#fff; transition:transform .4s ease, box-shadow .4s ease; }
+  .btn-pink::after { content:""; position:absolute; top:0; left:-120%; width:60%; height:100%; background:linear-gradient(120deg,transparent,rgba(255,255,255,.6),transparent); transform:skewX(-20deg); transition:left .8s ease; }
+  .btn-pink:hover::after { left:140%; }
+  .btn-pink:hover { transform:translateY(-2px) scale(1.02); box-shadow:0 14px 30px -10px rgba(230,143,176,.8); }
+  .btn-soft { border:1.5px solid #E68FB0; color:#5B3445; background:#fff; transition:all .4s ease; }
+  .btn-soft:hover { background:#FFE3ED; }
+
+  /* Aparición al hacer scroll */
+  .reveal { opacity:0; transform:translateY(34px); transition:opacity 1s cubic-bezier(.2,.7,.2,1), transform 1s cubic-bezier(.2,.7,.2,1); }
+  .reveal.visible { opacity:1; transform:none; }
+
+  @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+  .marquee { animation:marquee 30s linear infinite; }
+  @keyframes floaty { 0%,100%{transform:translateY(0) rotate(0)} 50%{transform:translateY(-12px) rotate(3deg)} }
+  .floaty { animation:floaty 6s ease-in-out infinite; }
+  @keyframes wiggle { 0%,100%{transform:rotate(-6deg)} 50%{transform:rotate(6deg)} }
+  .wiggle { animation:wiggle 3s ease-in-out infinite; }
+  @keyframes twinkle { 0%,100%{opacity:.2; transform:scale(.6)} 50%{opacity:1; transform:scale(1.1)} }
+  .twinkle { animation:twinkle 2.6s ease-in-out infinite; }
+  @keyframes ping2 { 0%{transform:scale(1);opacity:.6} 100%{transform:scale(1.9);opacity:0} }
+  .wa-ring { animation:ping2 2s ease-out infinite; }
+
+  /* Rastro de brillitos del cursor */
+  .spark { position:fixed; pointer-events:none; z-index:70; color:#F3C96B; font-size:14px; animation:sparkFade .9s ease-out forwards; }
+  @keyframes sparkFade { to { opacity:0; transform:translate(var(--dx),var(--dy)) scale(.3) rotate(90deg); } }
+
+  /* Tarjetas */
+  .card-cute { transition:transform .6s cubic-bezier(.2,.7,.2,1), box-shadow .6s ease; }
+  .card-cute:hover { transform:translateY(-8px) rotate(-.4deg); box-shadow:0 30px 60px -25px rgba(230,143,176,.55); }
+  .img-zoom img { transition:transform 1.2s cubic-bezier(.2,.7,.2,1); }
+  .img-zoom:hover img { transform:scale(1.08); }
+
+  /* Acordeón */
+  .faq-body { display:grid; grid-template-rows:0fr; transition:grid-template-rows .5s ease; }
+  .faq-item.open .faq-body { grid-template-rows:1fr; }
+  .faq-item.open .faq-icon { transform:rotate(45deg); }
+
+  #header.scrolled { background:rgba(255,247,250,.9); backdrop-filter:blur(14px); box-shadow:0 8px 30px -18px rgba(230,143,176,.6); }
+
+  /* Antes / Después */
+  .ba-wrap { position:relative; overflow:hidden; user-select:none; }
+  .ba-after { position:absolute; inset:0; clip-path:inset(0 0 0 50%); }
+  .ba-handle { position:absolute; top:0; bottom:0; left:50%; width:3px; background:#fff; transform:translateX(-1px); }
+  .ba-handle span { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:46px; height:46px; border-radius:50%; background:#fff; display:flex; align-items:center; justify-content:center; box-shadow:0 6px 20px rgba(230,143,176,.5); color:#E68FB0; }
+  .ba-range { position:absolute; inset:0; width:100%; opacity:0; cursor:ew-resize; }
+
+  .quiz-opt.active { background:#E68FB0; color:#fff; border-color:#E68FB0; }
+  .filter-btn.active { background:#E68FB0; color:#fff; border-color:#E68FB0; }
+  .gal-item.hide { display:none; }
+  img.fallback { background:linear-gradient(135deg,#FFE3ED,#F8BBD0); }
+
+  /* Borde ondulado tipo encaje */
+  .scallop { height:18px; background:radial-gradient(circle at 12px -4px, transparent 12px, #FFE3ED 13px) repeat-x; background-size:24px 18px; }
+  .scallop-up { height:18px; background:radial-gradient(circle at 12px 22px, transparent 12px, #FFE3ED 13px) repeat-x; background-size:24px 18px; }
+</style>
+</head>
+
+<body class="font-sans overflow-x-hidden">
+
+<!-- ====== Lacito reutilizable (se usa con <use href="#bow">) ====== -->
+<svg width="0" height="0" class="absolute">
+  <symbol id="bow" viewBox="0 0 64 44">
+    <path d="M32 20C24 6 7 1 4 11c-3 11 14 17 28 9z"/>
+    <path d="M32 20c8-14 25-19 28-9 3 11-14 17-28 9z"/>
+    <path d="M29 21l-9 20 7-2 5-14z"/>
+    <path d="M35 21l9 20-7-2-5-14z"/>
+    <circle cx="32" cy="20" r="5.5"/>
+  </symbol>
+  <symbol id="heart" viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.6-9.2C.8 8.2 3 4 7 4c2.2 0 3.6 1.2 5 3 1.4-1.8 2.8-3 5-3 4 0 6.2 4.2 4.6 7.8C19.5 16.4 12 21 12 21z"/></symbol>
+</svg>
+
+<!-- ================= 1. BANNER SUPERIOR ================= -->
+<div class="bg-rose text-white text-[11px] tracking-[.25em] uppercase py-2.5 overflow-hidden relative z-50">
+  <div class="marquee whitespace-nowrap flex gap-16 w-max" id="topBanner"></div>
+</div>
+
+<!-- ================= 2. HEADER ================= -->
+<header id="header" class="sticky top-0 z-40 transition-all duration-500">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8 h-20 flex items-center justify-between">
+    <a href="#inicio" class="flex items-center gap-2 leading-none">
+      <svg class="w-10 h-7 text-rose wiggle"><use href="#bow"/></svg>
+      <span>
+        <span class="font-script text-3xl text-rose" id="brandName"></span>
+        <span class="block text-[9px] tracking-[.35em] uppercase text-mauve mt-0.5">Uñas a domicilio</span>
+      </span>
+    </a>
+    <nav class="hidden lg:flex gap-8 text-[12px] tracking-[.15em] uppercase">
+      <a href="#servicios" class="hover:text-rose transition">Servicios</a>
+      <a href="#proceso" class="hover:text-rose transition">Proceso</a>
+      <a href="#galeria" class="hover:text-rose transition">Galería</a>
+      <a href="#vip" class="hover:text-rose transition">Experiencia</a>
+      <a href="#politicas" class="hover:text-rose transition">Políticas</a>
+      <a href="#faq" class="hover:text-rose transition">FAQ</a>
+    </nav>
+    <div class="flex items-center gap-3">
+      <button data-wa="Hola MDM NAIL 🎀 Quiero reservar una cita." class="btn-pink hidden sm:flex items-center gap-2 px-5 py-3 rounded-full text-[11px] tracking-[.18em] uppercase font-medium">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.2L2 22l4.9-1.3c1.5.8 3.2 1.3 5.1 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2zm5.5 12.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5 2.5 1 3 .8 3.6.7.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3z"/></svg>
+        Reservar cita
+      </button>
+      <button id="menuBtn" class="lg:hidden w-11 h-11 rounded-full bg-blush flex flex-col items-center justify-center gap-1.5" aria-label="Abrir menú">
+        <span class="w-5 h-0.5 bg-rose rounded"></span><span class="w-5 h-0.5 bg-rose rounded"></span>
+      </button>
+    </div>
+  </div>
+  <!-- Menú móvil -->
+  <div id="mobileMenu" class="lg:hidden fixed inset-0 bg-petal dots z-50 flex flex-col items-center justify-center gap-6 font-serif text-3xl opacity-0 pointer-events-none transition-opacity duration-500">
+    <button id="closeMenu" class="absolute top-6 right-6 text-4xl font-light text-rose">×</button>
+    <svg class="w-16 h-11 text-rose mb-2"><use href="#bow"/></svg>
+    <a href="#servicios">Servicios</a><a href="#proceso">Proceso</a><a href="#galeria">Galería</a>
+    <a href="#vip">Experiencia</a><a href="#politicas">Políticas</a><a href="#faq">FAQ</a>
+    <button data-wa="Hola MDM NAIL 🎀 Quiero reservar una cita." class="btn-pink mt-4 px-8 py-4 rounded-full text-xs font-sans tracking-[.2em] uppercase">Reservar cita</button>
+  </div>
+</header>
+
+<main>
+<!-- ================= 3. HERO ================= -->
+<section id="inicio" class="relative -mt-20 pt-28 lg:pt-32 pb-24 lg:pb-28 overflow-hidden dots">
+  <div class="absolute -top-40 -right-40 w-[520px] h-[520px] rounded-full bg-candy/60 blur-3xl"></div>
+  <div class="absolute bottom-0 -left-32 w-[380px] h-[380px] rounded-full bg-blush blur-3xl"></div>
+  <!-- Brillitos decorativos -->
+  <div id="heroSparkles" class="absolute inset-0 pointer-events-none"></div>
+
+  <div class="relative max-w-7xl mx-auto px-5 lg:px-8 grid lg:grid-cols-12 gap-14 items-center">
+    <div class="lg:col-span-6 reveal">
+      <p class="inline-flex items-center gap-2 bg-white/80 border border-candy rounded-full px-4 py-2 text-[11px] tracking-[.25em] uppercase text-rose mb-7">
+        <svg class="w-5 h-4"><use href="#bow" fill="currentColor"/></svg> Uñas & Nail Art a domicilio
+      </p>
+      <h1 class="font-serif text-[2.8rem] leading-[1.05] sm:text-6xl lg:text-[5rem] font-medium tracking-tight">
+        Uñas lindas, <span class="font-script text-rose">sin salir</span> de tu casa.
+      </h1>
+      <p class="mt-7 text-mauve text-[15px] lg:text-base leading-relaxed max-w-lg">
+        Soft Gel, semipermanente, acrílicas, polygel, nail art y press on. Llevamos el salón a tu casa en <strong class="text-plum font-medium" id="heroZona"></strong>, con <strong class="text-plum font-medium">kits desechables</strong> para cada clienta.
+      </p>
+      <div class="mt-9 flex flex-col sm:flex-row gap-4">
+        <button data-wa="Hola MDM NAIL 🎀 Quiero agendar mi cita a domicilio." class="btn-pink px-8 py-4 rounded-full text-[12px] tracking-[.2em] uppercase font-medium">Agendar mi cita 💅</button>
+        <a href="#servicios" class="btn-soft px-8 py-4 rounded-full text-[12px] tracking-[.2em] uppercase text-center">Ver servicios & precios</a>
+      </div>
+      <div class="mt-10 flex items-center gap-4">
+        <div class="flex -space-x-3">
+          <span class="w-10 h-10 rounded-full bg-blush border-2 border-white flex items-center justify-center text-rose"><svg class="w-4 h-4" fill="currentColor"><use href="#heart"/></svg></span>
+          <span class="w-10 h-10 rounded-full bg-candy border-2 border-white"></span>
+          <span class="w-10 h-10 rounded-full bg-rose border-2 border-white"></span>
+        </div>
+        <div class="text-sm">
+          <p class="text-shine tracking-widest">★★★★★ <span class="text-plum font-medium">5/5</span></p>
+          <p class="text-mauve text-xs" id="socialProof"></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="lg:col-span-6 relative reveal">
+      <div class="relative max-w-md mx-auto">
+        <!-- Lacito sobre la foto -->
+        <svg class="absolute -top-8 left-1/2 -translate-x-1/2 w-28 h-20 text-rose z-10 drop-shadow-lg wiggle"><use href="#bow"/></svg>
+        <div class="relative rounded-t-[999px] rounded-b-[2.5rem] overflow-hidden aspect-[4/5] shadow-2xl border-[6px] border-white img-zoom" id="heroTilt">
+          <img id="heroImg" alt="Uñas rosadas" class="w-full h-full object-cover fallback">
+          <div class="absolute inset-0 bg-gradient-to-t from-rose/30 to-transparent"></div>
+        </div>
+      </div>
+      <!-- Tarjeta Set del Mes (se oculta si está vacío en CONFIG_WEB) -->
+      <div id="setCard" class="floaty absolute -bottom-6 left-0 sm:left-4 lg:-left-4 bg-white/95 backdrop-blur-xl rounded-3xl p-5 shadow-2xl border border-candy w-64">
+        <p class="text-[10px] tracking-[.3em] uppercase text-rose">✨ Set destacado del mes</p>
+        <p class="font-serif text-2xl mt-1" id="setName"></p>
+        <p class="text-xs text-mauve mt-2" id="setDur"></p>
+      </div>
+      <!-- Sello sábado -->
+      <div class="absolute top-10 right-0 sm:right-6 w-28 h-28 rounded-full bg-white border-2 border-dashed border-rose text-plum flex flex-col items-center justify-center text-center rotate-12 shadow-xl">
+        <span class="text-[9px] tracking-[.3em] uppercase text-rose">Sábados</span>
+        <span class="font-script text-2xl text-rose leading-none my-1">de Promo</span>
+        <span class="text-[10px]">🎀 ✨ 🎀</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= Franja promo ================= -->
+<div class="scallop-up"></div>
+<section class="bg-blush py-7">
+  <div class="max-w-7xl mx-auto px-5 flex flex-col md:flex-row items-center justify-center gap-3 md:gap-10 text-center">
+    <p class="font-script text-3xl text-rose">✨ Precios de lanzamiento</p>
+    <span class="hidden md:block w-px h-6 bg-rose/40"></span>
+    <p class="text-[12px] tracking-[.25em] uppercase">Cada <strong class="text-rose">Sábado</strong> es día de promoción 🎀</p>
+    <button data-wa="Hola MDM NAIL 🎀 Quiero información sobre los Sábados de Promoción." class="btn-pink px-6 py-2.5 rounded-full text-[11px] tracking-[.18em] uppercase">Quiero mi promo</button>
+  </div>
+</section>
+<div class="scallop"></div>
+
+<!-- ================= 4. TEST INTERACTIVO ================= -->
+<section class="py-24 lg:py-28">
+  <div class="max-w-4xl mx-auto px-5 text-center reveal">
+    <svg class="w-14 h-10 text-candy mx-auto"><use href="#bow"/></svg>
+    <h2 class="font-serif text-4xl lg:text-6xl mt-3">Encuentra tu <span class="font-script text-rose">servicio ideal</span></h2>
+    <p class="text-mauve mt-4">Responde dos preguntitas y te decimos cuál es para ti 💕</p>
+  </div>
+  <div class="max-w-4xl mx-auto px-5 mt-12 reveal">
+    <div class="relative bg-white rounded-[2rem] p-6 sm:p-10 shadow-[0_30px_80px_-40px_rgba(230,143,176,.7)] border-2 border-blush">
+      <span class="absolute -top-4 -right-3 text-3xl twinkle">✨</span>
+      <div class="flex items-center gap-3 mb-8">
+        <div class="flex-1 h-2 bg-blush rounded-full overflow-hidden"><div id="quizBar" class="h-full bg-gradient-to-r from-candy to-rose w-0 transition-all duration-700 rounded-full"></div></div>
+        <span id="quizStep" class="text-xs text-mauve">1 / 2</span>
+      </div>
+      <div id="quizBox"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 5. SERVICIOS ================= -->
+<section id="servicios" class="py-24 lg:py-28 bg-gradient-to-b from-petal via-blush/60 to-petal">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8">
+    <div class="text-center reveal">
+      <p class="text-[11px] tracking-[.35em] uppercase text-rose">🎀 Menú de servicios 🎀</p>
+      <h2 class="font-serif text-4xl lg:text-6xl mt-4">Servicios & <span class="font-script text-rose">precios</span></h2>
+      <p class="text-mauve max-w-xl mx-auto mt-4" id="durGeneral"></p>
+    </div>
+    <div id="servicesGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-7 mt-14"></div>
+  </div>
+</section>
+
+<!-- ================= 6. PROCESO / VIDEOS ================= -->
+<section id="proceso" class="relative py-24 lg:py-28 bg-gradient-to-br from-rose via-[#D9779E] to-plum text-white overflow-hidden">
+  <div id="procSparkles" class="absolute inset-0 pointer-events-none"></div>
+  <div class="relative max-w-7xl mx-auto px-5 lg:px-8">
+    <div class="text-center reveal">
+      <svg class="w-14 h-10 text-white/80 mx-auto"><use href="#bow"/></svg>
+      <h2 class="font-serif text-4xl lg:text-6xl mt-3">Así trabajamos <span class="font-script">tus uñas</span></h2>
+      <p class="text-white/80 mt-4 max-w-xl mx-auto">Cuidado de la cutícula, limpieza y kits desechables en cada cita.</p>
+    </div>
+    <div id="videosGrid" class="grid lg:grid-cols-2 gap-10 mt-16"></div>
+  </div>
+</section>
+
+<!-- ================= 7. GALERÍA ================= -->
+<section id="galeria" class="py-24 lg:py-28">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8">
+    <div class="text-center reveal">
+      <p class="text-[11px] tracking-[.35em] uppercase text-rose">💅 Portafolio</p>
+      <h2 class="font-serif text-4xl lg:text-6xl mt-4">Nuestra <span class="font-script text-rose">galería</span></h2>
+      <p class="text-mauve text-sm mt-3">Fotos de ejemplo · pronto con trabajos reales</p>
+    </div>
+    <div id="filters" class="flex flex-wrap justify-center gap-2 mt-10 reveal"></div>
+    <div id="galleryGrid" class="columns-2 md:columns-3 lg:columns-4 gap-4 mt-12 [&>*]:mb-4"></div>
+
+    <!-- Antes / Después -->
+    <div class="mt-24 grid lg:grid-cols-2 gap-12 items-center reveal">
+      <div>
+        <p class="text-[11px] tracking-[.35em] uppercase text-rose">✨ Transformaciones</p>
+        <h3 class="font-serif text-4xl lg:text-5xl mt-4">Antes & <span class="font-script text-rose">después</span></h3>
+        <p class="text-mauve mt-5 leading-relaxed" id="baText"></p>
+        <p class="text-xs text-mauve mt-4 italic">← Desliza para comparar →</p>
+      </div>
+      <div class="ba-wrap rounded-[2rem] aspect-[4/3] shadow-2xl border-[6px] border-white">
+        <img id="baBefore" class="w-full h-full object-cover fallback" alt="Antes">
+        <div class="ba-after"><img id="baAfter" class="w-full h-full object-cover fallback" alt="Después"></div>
+        <span class="absolute top-4 left-4 bg-plum/70 text-white text-[10px] tracking-[.3em] uppercase px-3 py-1.5 rounded-full">Antes</span>
+        <span class="absolute top-4 right-4 bg-rose text-white text-[10px] tracking-[.3em] uppercase px-3 py-1.5 rounded-full">Después</span>
+        <div class="ba-handle"><span>🎀</span></div>
+        <input type="range" min="0" max="100" value="50" class="ba-range" id="baRange" aria-label="Comparar antes y después">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 8. EXPERIENCIA ================= -->
+<section id="vip" class="py-24 lg:py-28 bg-blush/60 dots">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8">
+    <div class="text-center reveal">
+      <p class="text-[11px] tracking-[.35em] uppercase text-rose">Más que una manicure</p>
+      <h2 class="font-serif text-4xl lg:text-6xl mt-4">La experiencia <span class="font-script text-rose">MDM</span></h2>
+    </div>
+    <div id="vipGrid" class="grid md:grid-cols-3 gap-7 mt-16"></div>
+    <!-- Contadores -->
+    <div id="countersGrid" class="grid grid-cols-2 lg:grid-cols-4 gap-6 mt-20 text-center reveal"></div>
+  </div>
+</section>
+
+<!-- ================= TESTIMONIOS ================= -->
+<section id="testimonios" class="py-24 lg:py-28 overflow-hidden">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8">
+    <div class="text-center reveal">
+      <p class="text-[11px] tracking-[.35em] uppercase text-rose">💕 Lo que dicen ellas</p>
+      <h2 class="font-serif text-4xl lg:text-6xl mt-4">Clientas <span class="font-script text-rose">felices</span></h2>
+    </div>
+    <div class="relative mt-14 reveal">
+      <div id="testiTrack" class="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-6 [scrollbar-width:none]"></div>
+      <div class="flex justify-center gap-3 mt-4">
+        <button id="testiPrev" class="w-11 h-11 rounded-full bg-blush text-rose text-xl hover:bg-rose hover:text-white transition" aria-label="Anterior">‹</button>
+        <button id="testiNext" class="w-11 h-11 rounded-full bg-blush text-rose text-xl hover:bg-rose hover:text-white transition" aria-label="Siguiente">›</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= AGENDA / CALENDARIO ================= -->
+<section id="agenda" class="py-24 lg:py-28 bg-blush/50 dots">
+  <div class="max-w-4xl mx-auto px-5">
+    <div class="text-center reveal">
+      <svg class="w-14 h-10 text-rose mx-auto"><use href="#bow"/></svg>
+      <h2 class="font-serif text-4xl lg:text-6xl mt-3">Elige tu <span class="font-script text-rose">día y hora</span></h2>
+      <p class="text-mauve mt-4">Escoge un día, una hora y tu servicio. Te confirmamos por WhatsApp 💕</p>
+    </div>
+    <div class="mt-12 bg-white rounded-[2rem] p-6 sm:p-10 border-2 border-blush shadow-[0_30px_80px_-40px_rgba(230,143,176,.7)] reveal">
+      <p class="text-[11px] tracking-[.3em] uppercase text-rose mb-4">1. Elige el día</p>
+      <div id="calDays" class="flex gap-3 overflow-x-auto pb-3 [scrollbar-width:none]"></div>
+      <p class="text-[11px] tracking-[.3em] uppercase text-rose mt-8 mb-4">2. Elige la hora</p>
+      <div id="calSlots" class="flex flex-wrap gap-3"><p class="text-mauve text-sm">Primero elige un día ✨</p></div>
+      <p class="text-[11px] tracking-[.3em] uppercase text-rose mt-8 mb-4">3. Elige tu servicio</p>
+      <select id="calService" class="w-full border-2 border-blush rounded-2xl px-4 py-3 bg-petal focus:outline-none focus:border-rose"></select>
+      <button id="calBtn" class="btn-pink mt-8 w-full py-4 rounded-full text-[12px] tracking-[.2em] uppercase opacity-50 pointer-events-none">Solicitar este horario 🎀</button>
+      <p class="text-xs text-mauve text-center mt-4" id="calNota"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 9. POLÍTICAS ================= -->
+<section id="politicas" class="py-24 lg:py-28">
+  <div class="max-w-5xl mx-auto px-5">
+    <div class="text-center reveal">
+      <p class="text-[11px] tracking-[.35em] uppercase text-rose">Antes de tu cita</p>
+      <h2 class="font-serif text-4xl lg:text-6xl mt-4">Políticas de <span class="font-script text-rose">reserva</span></h2>
+    </div>
+    <div id="policyList" class="mt-14 rounded-[2rem] border-2 border-dashed border-candy divide-y divide-blush bg-white reveal"></div>
+  </div>
+</section>
+
+<!-- ================= 10. FAQ ================= -->
+<section id="faq" class="py-24 lg:py-28 bg-blush/50">
+  <div class="max-w-3xl mx-auto px-5">
+    <div class="text-center reveal">
+      <p class="text-[11px] tracking-[.35em] uppercase text-rose">💕 Resolvemos tus dudas</p>
+      <h2 class="font-serif text-4xl lg:text-6xl mt-4">Preguntas <span class="font-script text-rose">frecuentes</span></h2>
+    </div>
+    <div id="faqList" class="mt-14 space-y-3"></div>
+  </div>
+</section>
+
+<!-- ================= CTA FINAL ================= -->
+<section class="relative py-28 bg-gradient-to-br from-candy via-rose to-[#D9779E] text-white text-center overflow-hidden">
+  <div id="ctaSparkles" class="absolute inset-0 pointer-events-none"></div>
+  <div class="relative max-w-3xl mx-auto px-5 reveal">
+    <svg class="w-20 h-14 text-white mx-auto wiggle"><use href="#bow"/></svg>
+    <h2 class="font-serif text-4xl lg:text-6xl mt-5">Tus manos merecen <span class="font-script">un mimo</span> 💅</h2>
+    <p class="mt-4 text-white/90">Cupos limitados por semana · Separa con solo S/ 15</p>
+    <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+      <button data-wa="Hola MDM NAIL 🎀 Quiero separar mi cupo." class="px-10 py-5 rounded-full bg-white text-rose text-[12px] tracking-[.22em] uppercase font-semibold hover:scale-105 transition shadow-xl">Separar mi cupo ahora</button>
+      <button class="share-btn px-8 py-5 rounded-full border-2 border-white text-white text-[12px] tracking-[.2em] uppercase hover:bg-white/20 transition">Compartir con una amiga 💌</button>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ================= 11. FOOTER ================= -->
+<footer class="bg-petal pt-20 pb-10 border-t-2 border-blush">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8 grid md:grid-cols-4 gap-10">
+    <div class="md:col-span-2">
+      <div class="flex items-center gap-2">
+        <svg class="w-10 h-7 text-rose"><use href="#bow"/></svg>
+        <p class="font-script text-4xl text-rose" id="footBrand"></p>
+      </div>
+      <p class="text-mauve mt-3 max-w-sm">Uñas y nail art a domicilio. Atención personalizada con kits desechables para cada clienta.</p>
+      <div class="flex gap-3 mt-6" id="socials"></div>
+      <button class="share-btn mt-5 inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-blush text-rose text-[11px] tracking-[.18em] uppercase hover:bg-rose hover:text-white transition">💌 Compartir esta web</button>
+    </div>
+    <div>
+      <p class="text-[11px] tracking-[.3em] uppercase text-rose mb-4">Zona & contacto</p>
+      <p class="text-mauve text-sm" id="footAddress"></p>
+      <div class="mt-3 space-y-1 text-sm" id="footPhones"></div>
+    </div>
+    <div>
+      <p class="text-[11px] tracking-[.3em] uppercase text-rose mb-4">Horarios</p>
+      <ul class="text-sm text-mauve space-y-1.5" id="footHours"></ul>
+    </div>
+  </div>
+  <p class="text-center text-xs text-mauve mt-16">© <span id="year"></span> <span id="copyBrand"></span> · Hecho con 💕 · Todos los derechos reservados.</p>
+</footer>
+
+<!-- ================= 12. WIDGET WHATSAPP ================= -->
+<div class="fixed bottom-5 right-5 z-50 flex items-end gap-3">
+  <div id="waBubble" class="hidden sm:block bg-white rounded-2xl rounded-br-sm shadow-xl border border-blush px-4 py-3 text-sm max-w-[220px] opacity-0 translate-y-2 transition-all duration-700">
+    <p class="font-medium">🎀 ¿Lista para tu cita?</p>
+    <p class="text-mauve text-xs mt-1">Escríbenos y separamos tu horario.</p>
+  </div>
+  <button data-wa="Hola MDM NAIL 🎀 Vi tu web y quiero información." class="relative w-16 h-16 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-2xl hover:scale-110 transition" aria-label="WhatsApp">
+    <span class="wa-ring absolute inset-0 rounded-full bg-[#25D366]"></span>
+    <svg class="w-8 h-8 relative" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.2L2 22l4.9-1.3c1.5.8 3.2 1.3 5.1 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2zm5.5 12.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5 2.5 1 3 .8 3.6.7.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3z"/></svg>
+    <span class="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-red-500 text-[10px] font-bold flex items-center justify-center border-2 border-white">1</span>
+  </button>
+</div>
+
+<!-- Lightbox de galería -->
+<div id="lightbox" class="fixed inset-0 z-[60] bg-plum/85 backdrop-blur-sm hidden items-center justify-center p-5">
+  <button id="lbClose" class="absolute top-5 right-6 text-white text-4xl font-light">×</button>
+  <figure class="max-w-3xl w-full">
+    <img id="lbImg" class="w-full max-h-[75vh] object-contain rounded-2xl" alt="">
+    <figcaption class="text-center text-white mt-4">
+      <p id="lbTitle" class="font-serif text-2xl"></p>
+      <button id="lbBtn" class="btn-pink mt-4 px-6 py-3 rounded-full text-[11px] tracking-[.2em] uppercase">Quiero este diseño 💅</button>
+    </figcaption>
+  </figure>
+</div>
+
+<script>
+/* =====================================================================
+   🎀 CONFIG_WEB — EDITA AQUÍ TODO EL CONTENIDO DE LA WEB 🎀
+   Cambia textos, precios, fotos y videos. No toques el código de abajo.
+   ===================================================================== */
+const CONFIG_WEB = {
+  marca: "MDM NAIL",
+
+  // WhatsApp: 51 (Perú) + número, sin espacios
+  whatsapp: "51926061530",
+  telefonos: ["926 061 530"],
+
+  bannerSuperior: [
+    "✨ Agenda abierta — Cupos limitados por semana ✨",
+    "🎀 Sábados de Promoción 🎀",
+    "💅 Servicio a domicilio en Ventanilla y Mi Perú 💅"
+  ],
+
+  pruebaSocial: "+30 clientas felices",
+  zona: "Ventanilla y Mi Perú (Callao)",
+  duracionGeneral: "Cada cita dura aprox. 2 horas y media por persona, según el servicio.",
+
+  // Déjalo con nombre vacío "" para ocultar la tarjeta
+  setDelMes: { nombre: "", detalle: "" },
+
+  fotoHero: "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=1200&q=80",
+
+  direccion: "🏠 Servicio a domicilio en Ventanilla y Mi Perú, Callao – Perú",
+  horarios: [
+    "Lunes: 2:00 pm – 7:00 pm",
+    "Viernes: 2:00 pm – 7:00 pm",
+    "Sábado: 8:00 am – 12:00 pm 🎀 Promo",
+    "Domingo: 2:00 pm – 7:00 pm"
+  ],
+
+  // Deja url vacía "" mientras no haya redes: el ícono se muestra como "Próximamente"
+  redes: [
+    { nombre: "Instagram", url: "" },
+    { nombre: "TikTok",    url: "" },
+    { nombre: "WhatsApp",  url: "https://wa.me/51926061530" }
+  ],
+
+  // ---------- SERVICIOS ----------
+  // precio: "S/ 35" → se muestra "S/ 35"   |   precio: "" → se muestra textoPrecio
+  servicios: [
+    {
+      id: "semi", titulo: "Esmaltado Semipermanente", etiqueta: "PRECIO ESPECIAL",
+      duracion: "≈ 2 h 30 min", precio: "S/ 30", textoPrecio: "",
+      foto: "https://images.unsplash.com/photo-1610992015732-2449b76344bc?w=900&q=80",
+      beneficios: ["Brillo que dura semanas", "Ideal para uña natural", "Muchos colores para elegir"]
+    },
+    {
+      id: "softgel", titulo: "Soft Gel", etiqueta: "MÁS POPULAR",
+      duracion: "≈ 2 h 30 min", precio: "S/ 35", textoPrecio: "",
+      foto: "https://images.unsplash.com/photo-1632345031435-8727f6897d53?w=900&q=80",
+      beneficios: ["Alargamiento con efecto natural", "Liviano y cómodo", "Acabado delicado"]
+    },
+    {
+      id: "acrilicas", titulo: "Uñas Acrílicas", etiqueta: "LARGA DURACIÓN",
+      duracion: "≈ 2 h 30 min", precio: "S/ 40", textoPrecio: "",
+      foto: "https://images.unsplash.com/photo-1519014816548-bf5fe059798b?w=900&q=80",
+      beneficios: ["Forma y largo a tu gusto", "Muy resistentes", "Perfectas para diseños"]
+    },
+    {
+      id: "polygel", titulo: "Polygel", etiqueta: "RESISTENTE & LIVIANO",
+      duracion: "≈ 2 h 30 min", precio: "S/ 40", textoPrecio: "",
+      foto: "https://images.unsplash.com/photo-1604902396830-aca29e19b067?w=900&q=80",
+      beneficios: ["Más liviano que el acrílico", "Flexible y resistente", "Sin olor fuerte"]
+    },
+    {
+      id: "nailart", titulo: "Nail Art", etiqueta: "DISEÑO DE AUTOR",
+      duracion: "Según el diseño", precio: "", textoPrecio: "Según diseño",
+      foto: "https://images.unsplash.com/photo-1607779097040-26e80aa78e66?w=900&q=80",
+      beneficios: ["Diseños pintados a mano", "Brillos, lacitos y decoraciones", "Ideas personalizadas"]
+    },
+    {
+      id: "presson", titulo: "Uñas Press On", etiqueta: "NUEVO",
+      duracion: "Según el diseño", precio: "", textoPrecio: "Según diseño",
+      foto: "https://images.unsplash.com/photo-1599948128020-9a44505b0d1b?w=900&q=80",
+      beneficios: ["Uñas listas para pegar", "Diseño hecho a tu medida", "Reutilizables con cuidado"]
+    }
+  ],
+  // Tarjeta "Próximamente" al final de los servicios (pon false para quitarla)
+  mostrarProximamente: true,
+
+  // ---------- TEST INTERACTIVO ----------
+  test: {
+    pregunta1: "¿Qué buscas hoy?",
+    opciones1: [
+      { texto: "Color lindo en mi uña natural", icono: "🌸", valor: "natural" },
+      { texto: "Alargar mis uñas", icono: "✨", valor: "alargar" },
+      { texto: "Un diseño súper cute", icono: "🎀", valor: "arte" }
+    ],
+    pregunta2: "¿Qué prefieres?",
+    opciones2: [
+      { texto: "Algo liviano y natural", icono: "🪶", valor: "liviano" },
+      { texto: "Algo muy resistente", icono: "💎", valor: "fuerte" }
+    ],
+    // Combinación → id del servicio recomendado
+    resultados: {
+      "natural-liviano": "semi",   "natural-fuerte": "polygel",
+      "alargar-liviano": "softgel", "alargar-fuerte": "acrilicas",
+      "arte-liviano": "nailart",    "arte-fuerte": "presson"
+    }
+  },
+
+  // ---------- EXPERIENCIA ----------
+  experiencia: [
+    { icono: "🏠", titulo: "Vamos a tu casa", texto: "Atención a domicilio en Ventanilla y Mi Perú. Tú solo relájate." },
+    { icono: "🧤", titulo: "Kits desechables", texto: "Cada clienta recibe su propio kit desechable para cuidar tu higiene y salud.", destacado: true },
+    { icono: "💕", titulo: "Atención personalizada", texto: "Una cita dedicada solo a ti, con tiempo para elegir el diseño perfecto." }
+  ],
+  contadores: [
+    { numero: 30,  sufijo: "+", texto: "Clientas felices" },
+    { numero: 100, sufijo: "%", texto: "Kits desechables" },
+    { numero: 6,   sufijo: "",  texto: "Servicios" },
+    { numero: 24,  sufijo: "h", texto: "Para reprogramar" }
+  ],
+
+  // ---------- POLÍTICAS ----------
+  politicas: [
+    { titulo: "Adelanto de S/ 15", texto: "Para separar tu cita se pide un adelanto de S/ 15, que se descuenta del total el día del servicio." },
+    { titulo: "Tolerancia de 10 a 15 minutos", texto: "Pasado ese tiempo, la cita podría reprogramarse para respetar a la siguiente clienta." },
+    { titulo: "Reprogramación con 24 h", texto: "Puedes cambiar tu cita avisando con 24 horas de anticipación." },
+    { titulo: "Métodos de pago", texto: "Yape, Plin, transferencia bancaria y efectivo." }
+  ],
+
+  // ---------- VIDEOS ----------
+  // embed: link "embed" de YouTube (ej: https://www.youtube.com/embed/XXXX). Vacío = "Video próximamente".
+  videos: [
+    {
+      titulo: "Preparación & cuidado de la cutícula",
+      descripcion: "Limpieza, retiro de cutícula y preparación de la uña para que el producto dure más.",
+      embed: "",
+      portada: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=1200&q=80"
+    },
+    {
+      titulo: "Aplicación de Soft Gel & Nail Art",
+      descripcion: "Colocación del Soft Gel y diseño pintado a mano, paso a paso.",
+      embed: "",
+      portada: "https://images.unsplash.com/photo-1599948128020-9a44505b0d1b?w=1200&q=80"
+    }
+  ],
+
+  // ---------- GALERÍA ----------
+  categoriasGaleria: ["Todos", "Soft Gel", "Semipermanente", "Acrílicas", "Polygel", "Nail Art", "Press On"],
+  galeria: [
+    { foto: "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=800&q=80", titulo: "Rosa Glaseado", categoria: "Soft Gel" },
+    { foto: "https://images.unsplash.com/photo-1607779097040-26e80aa78e66?w=800&q=80", titulo: "Lacitos Cute", categoria: "Nail Art" },
+    { foto: "https://images.unsplash.com/photo-1610992015732-2449b76344bc?w=800&q=80", titulo: "Nude Brillante", categoria: "Semipermanente" },
+    { foto: "https://images.unsplash.com/photo-1632345031435-8727f6897d53?w=800&q=80", titulo: "Perla Chrome", categoria: "Acrílicas" },
+    { foto: "https://images.unsplash.com/photo-1604902396830-aca29e19b067?w=800&q=80", titulo: "Francesa Rosa", categoria: "Polygel" },
+    { foto: "https://images.unsplash.com/photo-1599948128020-9a44505b0d1b?w=800&q=80", titulo: "Flores Pastel", categoria: "Press On" },
+    { foto: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&q=80", titulo: "Milky Pink", categoria: "Soft Gel" },
+    { foto: "https://images.unsplash.com/photo-1519014816548-bf5fe059798b?w=800&q=80", titulo: "Brillitos", categoria: "Nail Art" }
+  ],
+
+  antesDespues: {
+    texto: "Mira cómo cambian tus manos después de una cita con nosotras. Pronto subiremos fotos reales de nuestras clientas 💕",
+    antes:   "https://images.unsplash.com/photo-1519415510236-718bdfcd89c8?w=1000&q=80",
+    despues: "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=1000&q=80"
+  },
+
+  // ---------- TESTIMONIOS ----------
+  // ⚠️ Son EJEMPLOS. Reemplázalos por comentarios reales y cambia ejemplo: true → false.
+  // Mientras ejemplo sea true, la tarjeta muestra la etiqueta "Ejemplo".
+  testimonios: [
+    { nombre: "Clienta de Ventanilla", servicio: "Soft Gel", texto: "Me encantó que vinieran a mi casa. Mis uñas quedaron delicadas y súper lindas.", estrellas: 5, ejemplo: true },
+    { nombre: "Clienta de Mi Perú", servicio: "Nail Art", texto: "El diseño quedó tal cual lo pedí. Muy detallista y puntual.", estrellas: 5, ejemplo: true },
+    { nombre: "Clienta de Ventanilla", servicio: "Semipermanente", texto: "Me duró muchísimo y el trato fue muy amable. Vuelvo seguro.", estrellas: 5, ejemplo: true },
+    { nombre: "Clienta de Mi Perú", servicio: "Acrílicas", texto: "Todo muy limpio, con kit nuevo. Me sentí muy segura.", estrellas: 5, ejemplo: true }
+  ],
+
+  // ---------- AGENDA ----------
+  // Horas de inicio por día (0=Domingo, 1=Lunes, ... 6=Sábado). Día sin lista = no se atiende.
+  agenda: {
+    diasAMostrar: 14,
+    horas: {
+      0: ["2:00 pm", "4:30 pm"],
+      1: ["2:00 pm", "4:30 pm"],
+      5: ["2:00 pm", "4:30 pm"],
+      6: ["8:00 am", "10:00 am"]
+    },
+    nota: "Los horarios son referenciales. Tu cita se confirma por WhatsApp con el adelanto de S/ 15."
+  },
+
+  // Texto que se envía al compartir la web
+  textoCompartir: "💅 Mira MDM NAIL: uñas a domicilio en Ventanilla y Mi Perú. ¡Los sábados hay promo! 🎀",
+
+  // ---------- PREGUNTAS FRECUENTES ----------
+  faq: [
+    { p: "¿Dónde atienden?", r: "Atendemos a domicilio en Ventanilla y Mi Perú (Callao). Llevamos todo lo necesario a tu casa." },
+    { p: "¿Cuánto dura una cita?", r: "Aproximadamente 2 horas y media por persona, según el servicio y el diseño." },
+    { p: "¿Cómo separo mi cita?", r: "Escríbenos por WhatsApp, elige tu servicio y horario, y separa con un adelanto de S/ 15 (se descuenta del total)." },
+    { p: "¿Cuánto cuestan los servicios?", r: "Semipermanente S/ 30, Soft Gel S/ 35, Acrílicas S/ 40 y Polygel S/ 40. Nail Art y Press On dependen del diseño. ¡Y los sábados hay promoción!" },
+    { p: "¿Qué métodos de pago aceptan?", r: "Yape, Plin, transferencia bancaria y efectivo." },
+    { p: "¿Puedo cambiar mi cita?", r: "Sí, avisando con 24 horas de anticipación. Tenemos una tolerancia de 10 a 15 minutos de tardanza." }
+  ]
+};
+
+/* =====================================================================
+   🎀 CÓDIGO DE LA WEB (no es necesario editar debajo de esta línea) 🎀
+   ===================================================================== */
+const $ = s => document.querySelector(s);
+const C = CONFIG_WEB;
+const FALLBACK = "data:image/svg+xml;utf8," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFE3ED"/><stop offset="1" stop-color="#F8BBD0"/></linearGradient></defs><rect width="100%" height="100%" fill="url(#g)"/><text x="50%" y="52%" font-size="90" text-anchor="middle">🎀</text></svg>');
+const img = (src, alt, cls="") => `<img src="${src}" alt="${alt}" loading="lazy" class="${cls} fallback" onerror="this.onerror=null;this.src='${FALLBACK}'">`;
+const esc = t => t.replace(/"/g, "&quot;");
+const precioDe = s => s.precio || s.textoPrecio || "Consultar";
+
+/* --- WhatsApp: arma el enlace con mensaje personalizado --- */
+function abrirWhatsApp(mensaje) {
+  window.open(`https://wa.me/${C.whatsapp}?text=${encodeURIComponent(mensaje)}`, "_blank");
+}
+document.addEventListener("click", e => {
+  const b = e.target.closest("[data-wa]");
+  if (b) { e.preventDefault(); abrirWhatsApp(b.dataset.wa); }
+});
+const msgServicio = s => `Hola ${C.marca} 🎀 Quiero reservar: *${s.titulo}* (${precioDe(s)}). ¿Qué horarios tienes disponibles?`;
+
+/* --- Textos generales --- */
+["#brandName", "#footBrand", "#copyBrand"].forEach(id => $(id).textContent = C.marca);
+$("#year").textContent = new Date().getFullYear();
+$("#socialProof").textContent = C.pruebaSocial;
+$("#heroZona").textContent = C.zona;
+$("#durGeneral").textContent = C.duracionGeneral;
+if (C.setDelMes.nombre) { $("#setName").textContent = C.setDelMes.nombre; $("#setDur").textContent = C.setDelMes.detalle; }
+else $("#setCard").remove();
+$("#heroImg").src = C.fotoHero;
+$("#heroImg").onerror = function(){ this.onerror=null; this.src=FALLBACK; };
+$("#topBanner").innerHTML = [...C.bannerSuperior, ...C.bannerSuperior, ...C.bannerSuperior, ...C.bannerSuperior].map(t => `<span>${t}</span>`).join("");
+
+/* --- Brillitos decorativos en secciones --- */
+function sembrarBrillitos(id, cantidad, color) {
+  const box = $(id); if (!box) return;
+  const simbolos = ["✦", "✧", "✨", "♡", "⋆"];
+  for (let i = 0; i < cantidad; i++) {
+    const s = document.createElement("span");
+    s.textContent = simbolos[i % simbolos.length];
+    s.className = "absolute twinkle";
+    s.style.cssText = `left:${Math.random()*100}%;top:${Math.random()*100}%;font-size:${10+Math.random()*16}px;color:${color};animation-delay:${Math.random()*3}s`;
+    box.appendChild(s);
+  }
+}
+sembrarBrillitos("#heroSparkles", 22, "#E68FB0");
+sembrarBrillitos("#procSparkles", 26, "rgba(255,255,255,.8)");
+sembrarBrillitos("#ctaSparkles", 26, "#fff");
+
+/* --- Servicios --- */
+let htmlServ = C.servicios.map((s, i) => `
+  <article class="card-cute reveal relative bg-white rounded-[2rem] overflow-hidden border-2 border-blush flex flex-col" style="transition-delay:${i*70}ms">
+    <div class="relative aspect-[4/3] overflow-hidden img-zoom">
+      ${img(s.foto, s.titulo, "w-full h-full object-cover")}
+      <span class="absolute top-4 left-4 ${s.etiqueta==='MÁS POPULAR'?'bg-rose text-white':'bg-white/95 text-rose'} text-[10px] tracking-[.2em] px-3 py-1.5 rounded-full font-medium">${s.etiqueta}</span>
+      <svg class="absolute -bottom-1 right-4 w-12 h-9 text-rose drop-shadow"><use href="#bow"/></svg>
+    </div>
+    <div class="p-7 flex flex-col flex-1">
+      <h3 class="font-serif text-3xl leading-tight">${s.titulo}</h3>
+      <div class="flex justify-between items-center mt-3 text-sm">
+        <span class="text-mauve">⏱ ${s.duracion}</span>
+        <span class="bg-blush text-rose font-semibold px-3 py-1 rounded-full">${precioDe(s)}</span>
+      </div>
+      <ul class="mt-5 space-y-2 text-sm flex-1">
+        ${s.beneficios.map(b => `<li class="flex gap-2"><span class="text-rose">✓</span>${b}</li>`).join("")}
+      </ul>
+      <button data-wa="${esc(msgServicio(s))}" class="btn-pink mt-7 w-full py-3.5 rounded-full text-[11px] tracking-[.2em] uppercase">Reservar este servicio</button>
+    </div>
+  </article>`).join("");
+if (C.mostrarProximamente) htmlServ += `
+  <article class="reveal rounded-[2rem] border-2 border-dashed border-candy bg-white/60 flex flex-col items-center justify-center text-center p-10 min-h-[300px]">
+    <svg class="w-16 h-12 text-candy wiggle"><use href="#bow"/></svg>
+    <h3 class="font-script text-4xl text-rose mt-4">¡Y más próximamente!</h3>
+    <p class="text-mauve text-sm mt-3">Nuevos servicios muy pronto. Pregúntanos por WhatsApp 💕</p>
+  </article>`;
+$("#servicesGrid").innerHTML = htmlServ;
+
+/* --- Test interactivo --- */
+let respuesta1 = null;
+function pintarPregunta(paso) {
+  const preg = paso === 1 ? C.test.pregunta1 : C.test.pregunta2;
+  const ops  = paso === 1 ? C.test.opciones1 : C.test.opciones2;
+  $("#quizStep").textContent = `${paso} / 2`;
+  $("#quizBar").style.width = paso === 1 ? "33%" : "66%";
+  $("#quizBox").innerHTML = `
+    <h3 class="font-serif text-3xl sm:text-4xl text-center">${preg}</h3>
+    <div class="grid sm:grid-cols-${ops.length} gap-4 mt-8">
+      ${ops.map(o => `<button class="quiz-opt border-2 border-blush rounded-2xl p-6 hover:border-rose hover:-translate-y-1 transition text-center" data-v="${o.valor}">
+        <span class="text-3xl block">${o.icono}</span><span class="block mt-3 text-sm">${o.texto}</span></button>`).join("")}
+    </div>`;
+  document.querySelectorAll(".quiz-opt").forEach(b => b.onclick = e => {
+    b.classList.add("active");
+    explosion(e.clientX, e.clientY);
+    setTimeout(() => {
+      if (paso === 1) { respuesta1 = b.dataset.v; pintarPregunta(2); }
+      else pintarResultado(`${respuesta1}-${b.dataset.v}`);
+    }, 400);
+  });
+}
+function pintarResultado(clave) {
+  const s = C.servicios.find(x => x.id === C.test.resultados[clave]) || C.servicios[0];
+  $("#quizStep").textContent = "💕";
+  $("#quizBar").style.width = "100%";
+  $("#quizBox").innerHTML = `
+    <div class="grid sm:grid-cols-2 gap-8 items-center">
+      <div class="rounded-2xl overflow-hidden aspect-square border-4 border-blush">${img(s.foto, s.titulo, "w-full h-full object-cover")}</div>
+      <div>
+        <p class="text-[11px] tracking-[.3em] uppercase text-rose">✨ Tu servicio ideal es</p>
+        <h3 class="font-serif text-4xl mt-2">${s.titulo}</h3>
+        <p class="text-mauve text-sm mt-2">⏱ ${s.duracion} · <strong class="text-rose">${precioDe(s)}</strong></p>
+        <ul class="mt-4 space-y-1 text-sm">${s.beneficios.map(b=>`<li><span class="text-rose">✓</span> ${b}</li>`).join("")}</ul>
+        <button data-wa="${esc(msgServicio(s))} (Me lo recomendó el test de la web)" class="btn-pink mt-6 w-full py-4 rounded-full text-[11px] tracking-[.2em] uppercase">Reservar ahora 🎀</button>
+        <button id="quizReset" class="mt-3 w-full text-xs text-mauve underline">Volver a hacer el test</button>
+      </div>
+    </div>`;
+  $("#quizReset").onclick = () => pintarPregunta(1);
+}
+pintarPregunta(1);
+
+/* --- Videos --- */
+$("#videosGrid").innerHTML = C.videos.map((v, i) => `
+  <article class="reveal" style="transition-delay:${i*120}ms">
+    <div class="relative aspect-video rounded-[1.75rem] overflow-hidden border-4 border-white/40 bg-plum">
+      ${v.embed
+        ? `<iframe src="${v.embed}" class="w-full h-full" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>`
+        : `${img(v.portada, v.titulo, "w-full h-full object-cover opacity-70")}
+           <div class="absolute inset-0 flex flex-col items-center justify-center">
+             <span class="w-20 h-20 rounded-full bg-white/90 flex items-center justify-center hover:scale-110 transition cursor-pointer shadow-xl">
+               <svg class="w-7 h-7 text-rose ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+             <span class="mt-4 text-[10px] tracking-[.3em] uppercase bg-white/90 text-rose px-3 py-1 rounded-full">Video próximamente</span>
+           </div>`}
+    </div>
+    <p class="text-[10px] tracking-[.3em] uppercase text-white/80 mt-6">🎀 Paso a paso · 0${i+1}</p>
+    <h3 class="font-serif text-3xl mt-2">${v.titulo}</h3>
+    <p class="text-white/80 mt-3 leading-relaxed">${v.descripcion}</p>
+  </article>`).join("");
+
+/* --- Galería con filtros + lightbox --- */
+$("#filters").innerHTML = C.categoriasGaleria.map((c, i) =>
+  `<button class="filter-btn ${i===0?'active':''} px-5 py-2.5 rounded-full border-2 border-blush bg-white text-[11px] tracking-[.15em] uppercase transition hover:border-rose" data-f="${c}">${c}</button>`).join("");
+$("#galleryGrid").innerHTML = C.galeria.map((g, i) => `
+  <figure class="gal-item group relative rounded-2xl overflow-hidden cursor-pointer break-inside-avoid border-4 border-white shadow-md" data-cat="${g.categoria}" data-i="${i}">
+    ${img(g.foto, g.titulo, `w-full ${i%3===0?'aspect-[3/4]':'aspect-square'} object-cover transition duration-700 group-hover:scale-110`)}
+    <figcaption class="absolute inset-0 bg-gradient-to-t from-rose/90 via-rose/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-500 flex flex-col justify-end p-5 text-white">
+      <span class="text-[10px] tracking-[.3em] uppercase">${g.categoria}</span>
+      <span class="font-script text-3xl">${g.titulo}</span>
+    </figcaption>
+  </figure>`).join("");
+document.querySelectorAll(".filter-btn").forEach(b => b.onclick = () => {
+  document.querySelectorAll(".filter-btn").forEach(x => x.classList.remove("active"));
+  b.classList.add("active");
+  document.querySelectorAll(".gal-item").forEach(it =>
+    it.classList.toggle("hide", !(b.dataset.f === "Todos" || it.dataset.cat === b.dataset.f)));
+});
+const lb = $("#lightbox");
+document.querySelectorAll(".gal-item").forEach(it => it.onclick = () => {
+  const g = C.galeria[it.dataset.i];
+  $("#lbImg").src = g.foto; $("#lbTitle").textContent = g.titulo;
+  $("#lbBtn").dataset.wa = `Hola ${C.marca} 🎀 Me encantó el diseño "${g.titulo}" (${g.categoria}) de tu galería. ¿Me lo puedes hacer?`;
+  lb.classList.replace("hidden", "flex");
+});
+$("#lbClose").onclick = () => lb.classList.replace("flex", "hidden");
+lb.onclick = e => { if (e.target === lb) lb.classList.replace("flex", "hidden"); };
+
+/* --- Antes / Después --- */
+$("#baText").textContent = C.antesDespues.texto;
+$("#baBefore").src = C.antesDespues.antes;
+$("#baAfter").src = C.antesDespues.despues;
+[$("#baBefore"), $("#baAfter")].forEach(el => el.onerror = function(){ this.onerror=null; this.src=FALLBACK; });
+$("#baRange").oninput = e => {
+  const v = e.target.value;
+  document.querySelector(".ba-after").style.clipPath = `inset(0 0 0 ${v}%)`;
+  document.querySelector(".ba-handle").style.left = v + "%";
+};
+
+/* --- Experiencia y contadores --- */
+$("#vipGrid").innerHTML = C.experiencia.map(x => `
+  <div class="card-cute reveal relative rounded-[2rem] p-9 ${x.destacado ? 'bg-rose text-white md:-translate-y-6' : 'bg-white border-2 border-blush'}">
+    <svg class="absolute -top-5 left-1/2 -translate-x-1/2 w-14 h-10 ${x.destacado ? 'text-plum' : 'text-candy'}"><use href="#bow"/></svg>
+    <div class="w-14 h-14 rounded-full ${x.destacado ? 'bg-white/25' : 'bg-blush'} flex items-center justify-center text-2xl mx-auto">${x.icono}</div>
+    <h3 class="font-serif text-3xl mt-6 text-center">${x.titulo}</h3>
+    <p class="${x.destacado ? 'text-white/90' : 'text-mauve'} mt-3 leading-relaxed text-center">${x.texto}</p>
+  </div>`).join("");
+$("#countersGrid").innerHTML = C.contadores.map(c => `
+  <div class="bg-white rounded-3xl py-7 border-2 border-blush">
+    <p class="font-serif text-5xl text-rose"><span class="counter" data-to="${c.numero}">0</span>${c.sufijo}</p>
+    <p class="text-xs tracking-[.2em] uppercase text-mauve mt-2">${c.texto}</p>
+  </div>`).join("");
+
+/* --- Políticas --- */
+$("#policyList").innerHTML = C.politicas.map((p, i) => `
+  <div class="p-7 sm:p-9 flex gap-6 items-start">
+    <span class="shrink-0 w-12 h-12 rounded-full bg-blush text-rose font-serif text-2xl flex items-center justify-center">${i+1}</span>
+    <div><h3 class="font-serif text-2xl">${p.titulo}</h3><p class="text-mauve mt-2">${p.texto}</p></div>
+  </div>`).join("");
+
+/* --- FAQ acordeón --- */
+$("#faqList").innerHTML = C.faq.map(f => `
+  <div class="faq-item reveal bg-white rounded-2xl border-2 border-blush">
+    <button class="faq-q w-full flex justify-between items-center gap-4 text-left p-6">
+      <span class="font-serif text-xl sm:text-2xl">${f.p}</span>
+      <span class="faq-icon text-rose text-3xl font-light transition-transform duration-500">+</span>
+    </button>
+    <div class="faq-body"><div class="overflow-hidden"><p class="px-6 pb-6 text-mauve leading-relaxed">${f.r}</p></div></div>
+  </div>`).join("");
+document.querySelectorAll(".faq-q").forEach(q => q.onclick = () => {
+  const item = q.parentElement, open = item.classList.contains("open");
+  document.querySelectorAll(".faq-item").forEach(x => x.classList.remove("open"));
+  if (!open) item.classList.add("open");
+});
+
+/* --- Footer --- */
+$("#footAddress").textContent = C.direccion;
+$("#footPhones").innerHTML = C.telefonos.map(t =>
+  `<a href="https://wa.me/51${t.replace(/\s/g,'')}" target="_blank" class="block hover:text-rose transition">📱 ${t}</a>`).join("");
+$("#footHours").innerHTML = C.horarios.map(h => `<li>${h}</li>`).join("");
+const iconosRed = {
+  Instagram: '<path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm5 5a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6zm5.5-3a1 1 0 100 2 1 1 0 000-2z"/>',
+  TikTok: '<path d="M16 2c.3 2.3 1.7 3.9 4 4.1v3.1c-1.5 0-2.9-.4-4-1.2V15a6 6 0 11-6-6c.3 0 .7 0 1 .1v3.2a3 3 0 102 2.8V2h3z"/>',
+  WhatsApp: '<path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.2L2 22l4.9-1.3c1.5.8 3.2 1.3 5.1 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/>'
+};
+$("#socials").innerHTML = C.redes.map(r => r.url
+  ? `<a href="${r.url}" target="_blank" title="${r.nombre}" class="w-12 h-12 rounded-full bg-blush text-rose flex items-center justify-center hover:bg-rose hover:text-white hover:-translate-y-1 transition"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">${iconosRed[r.nombre]||''}</svg></a>`
+  : `<span title="${r.nombre}: próximamente" class="relative group w-12 h-12 rounded-full bg-blush/60 text-candy flex items-center justify-center cursor-default"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">${iconosRed[r.nombre]||''}</svg>
+      <span class="absolute -top-8 whitespace-nowrap text-[10px] bg-plum text-white px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition">Próximamente</span></span>`
+).join("");
+
+/* --- Interacciones globales --- */
+window.addEventListener("scroll", () => $("#header").classList.toggle("scrolled", scrollY > 30));
+
+// Menú móvil
+const mm = $("#mobileMenu");
+const toggleMenu = on => { mm.style.opacity = on ? 1 : 0; mm.style.pointerEvents = on ? "auto" : "none"; };
+$("#menuBtn").onclick = () => toggleMenu(true);
+$("#closeMenu").onclick = () => toggleMenu(false);
+mm.querySelectorAll("a").forEach(a => a.onclick = () => toggleMenu(false));
+
+// Aparición al hacer scroll + contadores
+const io = new IntersectionObserver(entries => entries.forEach(en => {
+  if (!en.isIntersecting) return;
+  en.target.classList.add("visible");
+  en.target.querySelectorAll(".counter").forEach(c => {
+    const to = +c.dataset.to, t0 = performance.now();
+    const step = t => { const p = Math.min((t - t0) / 1800, 1); c.textContent = Math.floor(to * (1 - Math.pow(1 - p, 3))); if (p < 1) requestAnimationFrame(step); };
+    requestAnimationFrame(step);
+  });
+  io.unobserve(en.target);
+}), { threshold: .15 });
+document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+
+// Rastro de brillitos que sigue al cursor (solo computadora)
+let ultimo = 0;
+window.addEventListener("mousemove", e => {
+  const ahora = Date.now(); if (ahora - ultimo < 45) return; ultimo = ahora;
+  crearBrillo(e.clientX, e.clientY, 20);
+});
+function crearBrillo(x, y, rango) {
+  const s = document.createElement("span");
+  s.className = "spark";
+  s.textContent = ["✦","✧","✨","♡"][Math.floor(Math.random()*4)];
+  s.style.left = x + "px"; s.style.top = y + "px";
+  s.style.color = Math.random() > .5 ? "#F3C96B" : "#E68FB0";
+  s.style.setProperty("--dx", (Math.random()-.5)*rango*2 + "px");
+  s.style.setProperty("--dy", (Math.random()*rango + 10) + "px");
+  document.body.appendChild(s);
+  setTimeout(() => s.remove(), 900);
+}
+// Explosión de brillitos al tocar botones (también en celular)
+function explosion(x, y) { for (let i = 0; i < 12; i++) crearBrillo(x, y, 70); }
+document.addEventListener("click", e => {
+  if (e.target.closest("button, a")) explosion(e.clientX, e.clientY);
+});
+
+// Inclinación 3D de la foto principal
+const tilt = $("#heroTilt");
+tilt.style.transition = "transform .4s ease";
+tilt.addEventListener("mousemove", e => {
+  const r = tilt.getBoundingClientRect();
+  const x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+  tilt.style.transform = `perspective(900px) rotateY(${x*8}deg) rotateX(${-y*8}deg)`;
+});
+tilt.addEventListener("mouseleave", () => tilt.style.transform = "");
+
+/* --- Testimonios (carrusel) --- */
+$("#testiTrack").innerHTML = C.testimonios.map(t => `
+  <article class="snap-center shrink-0 w-[85%] sm:w-[48%] lg:w-[32%] relative bg-white rounded-[2rem] p-8 border-2 border-blush">
+    <svg class="absolute -top-4 right-6 w-12 h-9 text-candy"><use href="#bow"/></svg>
+    ${t.ejemplo ? '<span class="absolute top-5 left-6 text-[9px] tracking-[.2em] uppercase bg-blush text-mauve px-2 py-1 rounded-full">Ejemplo</span>' : ''}
+    <p class="text-shine text-lg mt-4">${"★".repeat(t.estrellas)}</p>
+    <p class="font-serif text-2xl leading-snug mt-3">“${t.texto}”</p>
+    <div class="flex items-center gap-3 mt-6">
+      <span class="w-11 h-11 rounded-full bg-blush text-rose flex items-center justify-center font-script text-2xl">${t.nombre.charAt(0)}</span>
+      <div><p class="font-medium text-sm">${t.nombre}</p><p class="text-xs text-rose">${t.servicio}</p></div>
+    </div>
+  </article>`).join("");
+const track = $("#testiTrack");
+const moverTesti = dir => track.scrollBy({ left: dir * track.clientWidth * .8, behavior: "smooth" });
+$("#testiPrev").onclick = () => moverTesti(-1);
+$("#testiNext").onclick = () => moverTesti(1);
+setInterval(() => {
+  if (track.scrollLeft + track.clientWidth >= track.scrollWidth - 10) track.scrollTo({ left: 0, behavior: "smooth" });
+  else moverTesti(1);
+}, 5000);
+
+/* --- Agenda / calendario --- */
+const DIAS = ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"];
+const MESES = ["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"];
+let cita = { dia: null, hora: null };
+$("#calNota").textContent = C.agenda.nota;
+$("#calService").innerHTML = C.servicios.map(s => `<option value="${s.titulo}">${s.titulo} · ${precioDe(s)}</option>`).join("");
+
+const fechas = [];
+for (let i = 0; fechas.length < C.agenda.diasAMostrar && i < 60; i++) {
+  const d = new Date(); d.setDate(d.getDate() + i);
+  if (C.agenda.horas[d.getDay()]) fechas.push(d);
+}
+$("#calDays").innerHTML = fechas.map((d, i) => `
+  <button class="cal-day shrink-0 w-20 rounded-2xl border-2 border-blush py-3 text-center hover:border-rose transition ${d.getDay()===6?'bg-blush/60':''}" data-i="${i}">
+    <span class="block text-[10px] uppercase tracking-widest text-mauve">${DIAS[d.getDay()]}</span>
+    <span class="block font-serif text-3xl">${d.getDate()}</span>
+    <span class="block text-[10px] uppercase text-mauve">${MESES[d.getMonth()]}</span>
+    ${d.getDay()===6 ? '<span class="block text-[9px] text-rose mt-1">🎀 Promo</span>' : ''}
+  </button>`).join("");
+
+function revisarBoton() {
+  const ok = cita.dia && cita.hora;
+  $("#calBtn").classList.toggle("opacity-50", !ok);
+  $("#calBtn").classList.toggle("pointer-events-none", !ok);
+}
+document.querySelectorAll(".cal-day").forEach(b => b.onclick = () => {
+  document.querySelectorAll(".cal-day").forEach(x => x.classList.remove("bg-rose", "text-white", "border-rose"));
+  b.classList.add("bg-rose", "text-white", "border-rose");
+  cita.dia = fechas[b.dataset.i]; cita.hora = null;
+  $("#calSlots").innerHTML = C.agenda.horas[cita.dia.getDay()].map(h =>
+    `<button class="cal-slot px-6 py-3 rounded-full border-2 border-blush hover:border-rose transition">${h}</button>`).join("");
+  document.querySelectorAll(".cal-slot").forEach(s => s.onclick = () => {
+    document.querySelectorAll(".cal-slot").forEach(x => x.classList.remove("bg-rose", "text-white", "border-rose"));
+    s.classList.add("bg-rose", "text-white", "border-rose");
+    cita.hora = s.textContent; revisarBoton();
+  });
+  revisarBoton();
+});
+$("#calBtn").onclick = () => {
+  const d = cita.dia;
+  const fecha = `${["domingo","lunes","martes","miércoles","jueves","viernes","sábado"][d.getDay()]} ${d.getDate()} de ${MESES[d.getMonth()]}`;
+  abrirWhatsApp(`Hola ${C.marca} 🎀 Quisiera separar una cita:\n📅 ${fecha}\n⏰ ${cita.hora}\n💅 ${$("#calService").value}\n¿Está disponible?`);
+};
+
+/* --- Compartir la web --- */
+document.querySelectorAll(".share-btn").forEach(b => b.onclick = async () => {
+  const url = location.href.startsWith("http") ? location.href : "";
+  if (navigator.share && url) {
+    try { await navigator.share({ title: C.marca, text: C.textoCompartir, url }); return; } catch (e) {}
+  }
+  window.open(`https://wa.me/?text=${encodeURIComponent(C.textoCompartir + (url ? " " + url : ""))}`, "_blank");
+});
+
+// Burbuja de WhatsApp aparece a los 4 segundos
+setTimeout(() => { const b = $("#waBubble"); b.style.opacity = 1; b.style.transform = "none"; }, 4000);
+</script>
+</body>
+</html>
